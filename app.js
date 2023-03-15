@@ -1,7 +1,7 @@
 const cssCode = `
 #chatButton {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
   background-color: #007bff;
   color: #fff;
@@ -24,7 +24,7 @@ const cssCode = `
 
 #chatBox {
   position: fixed;
-  bottom: 20px;
+  bottom: 40px;
   right: 20px;
   width: 300px;
   height: 400px;
@@ -187,11 +187,11 @@ const messageInput = document.getElementById("messageInput");
 const chatContent = document.getElementById("chatContent");
 const dragButton = document.getElementById("dragButton");
 
-let messages = [];
+let chat_messages = [];
 
-function renderMessages() {
+function renderchat_messages() {
   chatContent.innerHTML = "";
-  messages.forEach((message) => {
+  chat_messages.forEach((message) => {
     const div = document.createElement("div");
     div.innerHTML = message.text;
     div.classList.add("chat-bubble");
@@ -208,8 +208,8 @@ function renderMessages() {
 }
 
 function addMessage(message) {
-  messages.push(message);
-  renderMessages();
+  chat_messages.push(message);
+  renderchat_messages();
 }
 
 function sendMessage() {
@@ -222,8 +222,8 @@ function sendMessage() {
     };
 
     sendSignalRMessage(messageObj.sender, messageObj.text);
-    messages.push(messageObj);
-    renderMessages();
+    chat_messages.push(messageObj);
+    renderchat_messages();
     messageInput.value = "";
   }
 }
@@ -312,8 +312,8 @@ function  onSignalRScriptLoad()
     };
 
     if(user == "Server")
-      messages.push(messageObj);
-    renderMessages();
+      chat_messages.push(messageObj);
+    renderchat_messages();
 
   });
   
