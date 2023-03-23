@@ -282,7 +282,8 @@ document.addEventListener("mouseup", () => {
 function  onSignalRScriptLoad()
 {
   connection = new signalR.HubConnectionBuilder()
-  .withUrl("http://localhost:5121/connect")
+  //.withUrl("http://localhost:5121/connect") //web
+  .withUrl("http://localhost:5041/connect") //api
   .withAutomaticReconnect({
     nextRetryDelayInMilliseconds: retryContext => {
         if (retryContext.elapsedMilliseconds < 60000) {
